@@ -13,10 +13,10 @@ public class PersonTest {
     @Before
     public void setUp() throws Exception {
         Person p1 = new Person("Abby J", LocalDate.of(2000, 11, 22), Person.Sex.FEMALE, "abbyj@gmail.com");
-        Person p2 = new Person("Bobby A", LocalDate.of(2010, 5, 20), Person.Sex.FEMALE, "abbyj@gmail.com");
-        Person p3 = new Person("Grace M", LocalDate.of(1997, 3, 6), Person.Sex.FEMALE, "abbyj@gmail.com");
-        Person p4 = new Person("Henry P", LocalDate.of(1995, 1, 10), Person.Sex.FEMALE, "abbyj@gmail.com");
-        Person p5 = new Person("Chris H", LocalDate.of(2005, 10, 1), Person.Sex.FEMALE, "abbyj@gmail.com");
+        Person p2 = new Person("Bobby A", LocalDate.of(2010, 5, 20), Person.Sex.MALE, "bobbya@gmail.com");
+        Person p3 = new Person("Grace M", LocalDate.of(1997, 3, 6), Person.Sex.FEMALE, "gracem@gmail.com");
+        Person p4 = new Person("Henry P", LocalDate.of(1995, 1, 10), Person.Sex.MALE, "henryp@gmail.com");
+        Person p5 = new Person("Chris H", LocalDate.of(2005, 10, 1), Person.Sex.MALE, "chrish@gmail.com");
         this.roster = new ArrayList<>();
         roster.add(p1);
         roster.add(p2);
@@ -54,27 +54,45 @@ public class PersonTest {
     public void setBirthday() {
         LocalDate expectedBirthday = LocalDate.of(1998, 7, 7);
         this.roster.get(0).setBirthday(expectedBirthday);
-        Assert.assertEquals(expectedBirthday, this.roster.get(0).getBirthday());
+        LocalDate actualBirthday = this.roster.get(0).getBirthday();
+        Assert.assertEquals(expectedBirthday, actualBirthday);
     }
 
     @Test
     public void getGender() {
+        Person.Sex expected = Person.Sex.FEMALE;
+        Person.Sex actual = this.roster.get(0).getGender();
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void setGender() {
+        Person.Sex expected = Person.Sex.FEMALE;
+        this.roster.get(0).setGender(expected);
+        Person.Sex actual = this.roster.get(0).getGender();
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void getEmailAddress() {
+        String expected = "abbyj@gmail.com";
+        String actual = this.roster.get(0).getEmailAddress();
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void setEmailAddress() {
+        String expected = "abbyjnew@gmail.com";
+        this.roster.get(0).setEmailAddress(expected);
+        String actual = this.roster.get(0).getEmailAddress();
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void getAge() {
+        int expected = 19;
+        int actual = this.roster.get(0).getAge();
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
