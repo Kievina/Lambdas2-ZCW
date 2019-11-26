@@ -1,8 +1,7 @@
-package java;
-
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Person {
 
@@ -67,6 +66,14 @@ public class Person {
                 ", gender=" + gender +
                 ", emailAddress='" + emailAddress + '\'' +
                 '}');
+    }
+
+    public static void printPersons(List<Person> roster, CheckPerson tester) {
+        for (Person p : roster) {
+            if (tester.test(p)) {
+                p.printPerson();
+            }
+        }
     }
 }
 
