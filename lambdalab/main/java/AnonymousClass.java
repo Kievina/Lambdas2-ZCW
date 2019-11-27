@@ -38,6 +38,5 @@ public class AnonymousClass {
         AnonymousClass an = new AnonymousClass();
         an.createClass1();
         an.createClass2();
-
     }
 }
