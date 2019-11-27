@@ -105,6 +105,5 @@ public class PersonTest {
                 ", gender=" + p.getGender() +
                 ", emailAddress='" + p.getEmailAddress() + '\'' +
                 '}';
-
     }
 }
