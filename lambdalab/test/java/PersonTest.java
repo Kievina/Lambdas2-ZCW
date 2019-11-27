@@ -3,9 +3,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.junit.Assert.assertThat;
 
 public class PersonTest {
     private List<Person> roster;
@@ -97,14 +102,22 @@ public class PersonTest {
 
     @Test
     public void printPerson() {
-        Person p = new Person("Jeanne", LocalDate.now(), Person.Sex.FEMALE, "jeanne@gmail.com");
-        p.printPerson();
+        Person p = new Person("Jeanne", LocalDate.of(2000, 11, 22), Person.Sex.FEMALE, "jeanne@gmail.com");
+//        String expected = "Person{" +
+//                "name='" + p.getName() + '\'' +
+//                ", birthday=" + p.getBirthday() +
+//                ", gender=" + p.getGender() +
+//                ", emailAddress='" + p.getEmailAddress() + '\'' +
+//                '}';
         String expected = "Person{" +
-                "name='" + p.getName() + '\'' +
-                ", birthday=" + p.getBirthday() +
-                ", gender=" + p.getGender() +
-                ", emailAddress='" + p.getEmailAddress() + '\'' +
+                "name='" + "Jeanne" + '\'' +
+                ", birthday=" + "2000-11-22" +
+                ", gender=" + "FEMALE" +
+                ", emailAddress='" + "jeanne@gmail.com" + '\'' +
                 '}';
-
+        ByteArrayOutputStream sink = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(sink, true));
+        p.printPerson();
+        assertThat(new String(sink.toByteArray()), containsString(expected));
     }
 }
